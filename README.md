@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Name: aikidsfun
 
-Things you may want to cover:
+description: this website is designed to help parents and kids to find fun things to do and fun places to go, and find playdates with other kids to improve kids social activities and make parents easier to plan those.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+author: Rita Zhou
