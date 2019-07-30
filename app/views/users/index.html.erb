@@ -1,0 +1,38 @@
+<h1>Parents</h1>
+<% @users.each do |user| %>
+<div class='profile-box'>
+  <div class="row">
+    <div class='columns small-2 medium-3 large-2'>
+    <span><%= image_tag user.profile_photo.url.to_s %></span>
+    </div>
+
+    <div class="columns small-10 medium-9 large-10">
+          <div class="row">
+            <div class="columns small-12">
+              <%= user.first_name %> <%= user.last_name %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="columns small-12 tweet-content">
+              Age: <%= user.age %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="columns small-12 tweet-content">
+              Job: <%= user.career %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="columns small-12 tweet-content">
+              Availability: <%= user.availability %>
+            </div>
+          </div>
+    </div>
+  </div>
+
+</div>
+
+<% end %>

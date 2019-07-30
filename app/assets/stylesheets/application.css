@@ -15,3 +15,32 @@
  *= require foundation_and_overrides
 
  */
+
+.profile-photo-nav {
+  display: inline-block;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.logo {
+  float: left;
+}
+.top-bar {
+  background-color: #EDF4ED;
+}
+
+.top-bar-contents {
+  margin: 0 100px;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button){
+  background-color: #EDF4ED;
+}
+.top-bar-section ul li > a {
+  color: #535652;
+}
+
+/* .profile-photo-nav a {
+  display: inline;
+  width: auto;
+} */
