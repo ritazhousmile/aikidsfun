@@ -1,0 +1,76 @@
+<h1>User Profile Show Page</h1>
+
+  <div class="row">
+
+    <div class='columns small-3 medium-3 large-3'>
+    <span><%= image_tag @user.profile_photo.url.to_s %></span>
+    </div>
+
+    <div class='columns small-9 medium-9 large-9'>
+        <div>
+        <%= @user.first_name %> <%= @user.last_name %>
+        </div>
+
+        <div>
+          Age: <%= @user.age %>
+        </div>
+
+        <div>
+        Job: <%= @user.career %>
+        </div>
+
+        <div>
+          Availability: <%= @user.availability %>
+        </div>
+
+        <div>
+          Social Network: <%= link_to @user.social_network, url_for(@user.social_network) %>
+        </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="
+    question-list columns small-12 medium-12 large-12">
+    <ol>
+      <li>
+        <div class="question">
+          How many kids do you have?
+        </div>
+        <div class="answer">
+          <%= @user.number_of_kids %>
+        </div>
+      </li>
+
+      <li>
+        <div class="question">
+          What month and year was your child born?
+        </div>
+        <div class="answer">
+          <%= @user.born_month_and_year %>
+        </div>
+      </li>
+
+      <li>
+        <div class="question">
+          What kinds of activities does your kid like to do?
+        </div>
+        <div class="answer">
+          <%= @user.favorite_activities %>
+        </div>
+      </li>
+
+      <li>
+        <div class="question">
+          What places does your kid like to go?
+        </div>
+        <div class="answer">
+          <%= @user.favorite_places %>
+        </div>
+      </li>
+    </ol>
+
+  </div>
+</div>
