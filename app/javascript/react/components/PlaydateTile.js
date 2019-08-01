@@ -8,6 +8,7 @@ const PlaydateTile = (props) => {
       <div className="playdate-name">
         <Link to={`/playdates/${props.id}`}><h3>{props.name}</h3></Link>
       </div>
+      <div>Hosted by {props.host}</div>
       <div className="playdate-location">{props.location}</div>
       <div className="playdate-time">{props.time}</div>
       <div className="playdate-desc">{props.description}</div>

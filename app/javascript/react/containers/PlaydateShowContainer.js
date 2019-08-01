@@ -23,6 +23,7 @@ class PlaydateShowContainer extends Component {
      })
      .then(response => response.json())
      .then(body => {
+       debugger
        this.setState({playdate: body});
      })
      .catch(error => console.error(`Error in fetch: ${error.message}`));
