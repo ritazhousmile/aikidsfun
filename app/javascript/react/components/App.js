@@ -1,7 +1,14 @@
 import React from 'react'
+import {BrowserRouter, Route, Switch } from 'react-router-dom'
+import NavBar from './NavBar'
 
-export const App = (props) => {
-  return (<h1>Make It So React</h1>)
+const App = (props) => {
+  return (
+    <div>
+    <BrowserRouter>
+      <Route path='/' component={NavBar} />
+    </BrowserRouter>
+    </div>
+  )
 }
-
 export default App
