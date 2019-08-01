@@ -13,4 +13,5 @@ class User < ApplicationRecord
   validates :age, presence: true
   validates :career, presence: true
   validates :availability, presence: true, inclusion: {in: available_days}
+
 end
