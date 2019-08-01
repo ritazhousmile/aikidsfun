@@ -11,4 +11,3 @@ playdate2=Playdate.create(name:"Song time for kids all ages", time:'Friday, 14 A
 userdate1=Userdate.create(user_id: 3, playdate_id: 1)
 userdate2=Userdate.create(user_id: 5, playdate_id: 1)
 userdate3=Userdate.create(user_id: 5, playdate_id: 3)
-binding.pry
