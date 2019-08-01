@@ -16,4 +16,6 @@ class User < ApplicationRecord
 
   has_many :userdates
   has_many :playdates, through: :userdates
+
+  has_many :hosted_playdates, class_name: 'Playdate', foreign_key: 'host_id'
 end

@@ -48,6 +48,7 @@ class PlaydateIndexContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      // debugger
       this.setState({ playdates: body });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -55,7 +56,6 @@ class PlaydateIndexContainer extends Component {
 
   render() {
     let playdateTiles = this.state.playdates.map(playdate => {
-
       return (
         <PlaydateTile
           key={playdate.id}
@@ -64,6 +64,7 @@ class PlaydateIndexContainer extends Component {
           time={playdate.time}
           location={playdate.location}
           description={playdate.description}
+          host={playdate.host.full_name}
           />
       )
     })

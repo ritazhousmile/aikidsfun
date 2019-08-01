@@ -5,5 +5,7 @@ class Playdate < ApplicationRecord
   validates :description, presence: true
 
   has_many :userdates
-  has_many :users, through: :userdates 
+  has_many :users, through: :userdates
+
+  belongs_to :host, class_name: 'User'
 end
