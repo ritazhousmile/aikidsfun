@@ -14,4 +14,6 @@ class User < ApplicationRecord
   validates :career, presence: true
   validates :availability, presence: true, inclusion: {in: available_days}
 
+  has_many :userdates
+  has_many :playdates, through: :userdates
 end
