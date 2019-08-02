@@ -18,6 +18,10 @@
       </span>
 
       <section class="top-bar-section">
+        <ul class="left">
+          <li><%= link_to 'Playdates', playdates_path %></li>
+          <li><%= link_to 'Parent Profiles', users_path %></li>
+        </ul>
         <ul class="right">
           <%- if current_user -%>
             <li>

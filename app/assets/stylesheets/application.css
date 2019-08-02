@@ -27,10 +27,12 @@
 }
 .top-bar {
   background-color: #EDF4ED;
+  height: auto;
 }
 
 .top-bar-contents {
-  margin: 0 100px;
+  margin: 15px 100px 0;
+  height: 63px;
 }
 
 .top-bar-section li:not(.has-form) a:not(.button){
