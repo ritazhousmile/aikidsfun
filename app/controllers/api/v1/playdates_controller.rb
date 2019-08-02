@@ -1,8 +1,8 @@
 class Api::V1::PlaydatesController < ApplicationController
-  before_action :authorize_user, except: [:index, :show]
+  # before_action :authorize_user, except: [:index, :show]
 
   def index
-    render json: Playdate.all
+    render json: Playdate.all.order("created_at DESC")
   end
 
   def show
