@@ -6,6 +6,7 @@ const PlaydateShow = (props) => {
       <div className="playdate-header">
         <div className="playdate-name">
           <h3>{props.name}</h3>
+          <button onClick={props.handleClick}>Edit</button>
         </div>
       </div>
       <div className="playdate-details">

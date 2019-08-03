@@ -4,31 +4,47 @@ import Textfield from '../components/Textfield'
 class PlaydateFormContainer extends Component {
   constructor(props) {
     super(props)
+    if ('playdate' in this.props) { 
+      this.state = this.props.playdate
+    } else {
       this.state = {
         name: '',
         time: '',
         location: '',
         description: ''
       }
+    }
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handleTimeChange = this.handleTimeChange.bind(this)
     this.handleLocationChange = this.handleLocationChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
     this.handleClearForm = this.handleClearForm.bind(this)
+    this.handleFormUpdate = this.handleFormUpdate.bind(this)
   }
 
-  handleFormSubmit(event) {
-    event.preventDefault();
-    let newPlaydateObject = {
-      name: this.state.name,
-      time: this.state.time,
-      location: this.state.location,
-      description: this.state.description
+    handleFormSubmit(event) {
+      event.preventDefault();
+      let newPlaydateObject = {
+        name: this.state.name,
+        time: this.state.time,
+        location: this.state.location,
+        description: this.state.description
+      }
+      this.props.addNewplaydate(newPlaydateObject)
+      this.handleClearForm()
     }
-    this.props.addNewplaydate(newPlaydateObject)
-    this.handleClearForm()
-  }
+    handleFormUpdate(event) {
+      event.preventDefault();
+      let newPlaydateInfo = {
+        name: this.state.name,
+        time: this.state.time,
+        location: this.state.location,
+        description: this.state.description
+      }
+      this.props.updatePlaydateInfo(newPlaydateInfo)
+      this.handleClearForm()
+    }
 
     handleNameChange(event) {
       let input = event.target.value
@@ -60,10 +76,18 @@ class PlaydateFormContainer extends Component {
     }
 
   render() {
+    let handleClick
+    if ('playdate' in this.props) {
+      handleClick = this.handleFormUpdate
+    } else {
+      handleClick = this.handleFormSubmit
+    }
+
     return (
+
       <div>
         <h3>Add New Playdate</h3>
-        <form className="new-playdate-form callout" onSubmit={this.handleFormSubmit}>
+        <form className="new-playdate-form callout" onSubmit={handleClick}>
           <Textfield
             content={this.state.name}
             label="Playdate Name"
