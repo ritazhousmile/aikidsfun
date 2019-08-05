@@ -6,3 +6,15 @@
   margin: 1em;
   max-width: 667px;
 }
+
+#app .button, #app button {
+  margin-right: 1em;
+  width: 120px;
+  background-color: #159AD7;
+  color: black;
+}
+
+#app .button:hover, #app button:hover {
+  background-color: #555555;
+  color: white;
+}

@@ -18,4 +18,8 @@ class User < ApplicationRecord
   has_many :playdates, through: :userdates
 
   has_many :hosted_playdates, class_name: 'Playdate', foreign_key: 'host_id'
+
+  def host?
+    role == "host"
+  end
 end
