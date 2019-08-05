@@ -123,6 +123,7 @@ class PlaydateShowContainer extends Component {
         host={this.state.playdate.host_full_name}
         handleClick={this.handcleEditeClick}
         handleDelete={this.handleDeleteClick}
+        hostId={this.state.playdate.host_id}
       />
       {editPlaydate}
       </div>

@@ -1,14 +1,19 @@
 import React from 'react';
 
 const PlaydateShow = (props) => {
-
+  let editButton
+  let deleteButton
+  if (currentUserId == props.hostId) {
+    editButton = <button onClick={props.handleClick}>Edit</button>
+    deleteButton = <button onClick={props.handleDelete}>Delete</button>
+  }
   return(
     <div>
       <div className="playdate-header">
         <div className="playdate-name">
           <h3>{props.name}</h3>
-          <button onClick={props.handleClick}>Edit</button>
-          <button onClick={props.handleDelete}>Delete</button>
+            {editButton}
+            {deleteButton}
         </div>
       </div>
       <div>Hosted by {props.host}</div>

@@ -4,6 +4,7 @@ import PlaydateIndexContainer from '../containers/PlaydateIndexContainer'
 import PlaydateShowContainer from '../containers/PlaydateShowContainer'
 
 const NavBar = (props) => {
+  // debugger
   return (
     <div className="row">
       <div className="column">
