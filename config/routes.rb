@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
    namespace :api do
      namespace :v1 do
-       resources :playdates, only: [:index, :show, :new, :create, :edit, :update]
+       resources :playdates, only: [:index, :show, :new, :create, :edit, :update, :destroy]
      end
    end
 end

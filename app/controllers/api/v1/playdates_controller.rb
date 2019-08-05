@@ -19,23 +19,37 @@ class Api::V1::PlaydatesController < ApplicationController
     end
   end
 
-  def edit
-    playdate = Playdate.find(params[:id])
-  end
-
   def update
     playdate = Playdate.find(params[:id])
 
-    if playdate.update(playdate_params)
-      flash[:success] = "Playdate updated successfully"
-      render json: playdate
+    if current_user == playdate.host
+      if playdate.update(playdate_params)
+        flash[:success] = "Playdate updated successfully"
+        render json: playdate
+      else
+        render json: playdate.errors.full_messages.join(',')
+      end
     else
-      render json: playdate.errors.full_messages.join(',')
+      raise ActionController::RoutingError.new("You are not authorized to update this playdate")
     end
+  end
+
+  def destroy
+    playdate = Playdate.find(params[:id])
+    if current_user == playdate.host
+      playdate.destroy
+      render json: Playdate.all
+    else
+       render json: {playdate: "playdate", error_message: 'You are not authorized to delete this playdate!'}
+     end
   end
 
   private
   def playdate_params
     params.require(:playdate).permit(:name, :location, :time, :description)
   end
+
+
+
+
 end
