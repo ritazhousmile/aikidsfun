@@ -56,11 +56,7 @@
   <%- if Rails.env.development? || Rails.env.test? -%>
     <%= javascript_tag do %>
       window.railsEnv = '<%= Rails.env %>'
-      <% if current_user -%>
-        window.currentUserId = <%= current_user.id %>
-      <% else %>
-        window.currentUserId = 0
-      <% end %>
+
     <%- end -%>
   <%- end -%>
   <%= javascript_pack_tag 'application' %>

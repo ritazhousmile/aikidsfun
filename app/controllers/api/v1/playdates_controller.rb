@@ -6,14 +6,16 @@ class Api::V1::PlaydatesController < ApplicationController
 
   def show
     playdate = Playdate.find(params[:id])
-    render json: playdate
+    users = playdate.users
+    host = playdate.host
+    render json: {playdate: playdate, host: host, users: users, currentUser: current_user}
   end
 
   def create
     playdate = Playdate.new(playdate_params)
-    playdate.host_id = current_user.id
+    playdate.host = current_user
     if playdate.save
-      render json: playdate
+      render json: playdate 
     else
       render json: playdate.errors.full_messages.join(',')
     end
@@ -30,8 +32,17 @@ class Api::V1::PlaydatesController < ApplicationController
         render json: playdate.errors.full_messages.join(',')
       end
     else
-      raise ActionController::RoutingError.new("You are not authorized to update this playdate")
-    end
+      userdate = Userdate.new(user: current_user, playdate: playdate)
+      record = Userdate.where(user: current_user, playdate: playdate).exists?
+        if record
+          render json: {playdate: playdate, error_message: "You have already attended this playdate"}
+        else
+          userdate.save
+          playdate.save
+          users = playdate.users
+          render json: {playdate: playdate, users: users}
+        end
+      end
   end
 
   def destroy
@@ -48,8 +59,4 @@ class Api::V1::PlaydatesController < ApplicationController
   def playdate_params
     params.require(:playdate).permit(:name, :location, :time, :description)
   end
-
-
-
-
 end

@@ -4,7 +4,7 @@ import Textfield from '../components/Textfield'
 class PlaydateFormContainer extends Component {
   constructor(props) {
     super(props)
-    if ('playdate' in this.props) { 
+    if ('playdate' in this.props) {
       this.state = this.props.playdate
     } else {
       this.state = {
@@ -84,7 +84,6 @@ class PlaydateFormContainer extends Component {
     }
 
     return (
-
       <div>
         <h3>Add New Playdate</h3>
         <form className="new-playdate-form callout" onSubmit={handleClick}>

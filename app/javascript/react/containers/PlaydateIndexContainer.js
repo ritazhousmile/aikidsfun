@@ -64,6 +64,8 @@ class PlaydateIndexContainer extends Component {
           location={playdate.location}
           description={playdate.description}
           host={playdate.host_full_name}
+          hostProfilePhoto={playdate.host_profile_photo}
+          hostId={playdate.host_id}
           />
       )
     })

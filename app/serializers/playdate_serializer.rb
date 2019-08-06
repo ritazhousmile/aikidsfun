@@ -1,6 +1,5 @@
 class PlaydateSerializer < ActiveModel::Serializer
-  attributes :id, :name, :time, :location, :description, :host_full_name, :host_id
-
+  attributes :id, :name, :time, :location, :description, :host_full_name, :host_id, :users, :host_profile_photo
   belongs_to :host, class_name: 'User'
 
   def host_full_name
@@ -10,5 +9,13 @@ class PlaydateSerializer < ActiveModel::Serializer
   def host_id
     object.host.id
   end
+
+  def host_profile_photo
+    object.host.profile_photo
+  end
+
+  has_many :userdates
+  has_many :users, through: :userdates
+
 
 end
