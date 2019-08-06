@@ -42,7 +42,8 @@
   color: #535652;
 }
 
-/* .profile-photo-nav a {
-  display: inline;
-  width: auto;
-} */
+.profile-photo-round {
+  border-radius: 50px;
+  width: 50px;
+  margin: 5px;
+}
