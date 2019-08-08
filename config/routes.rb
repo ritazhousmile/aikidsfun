@@ -8,6 +8,17 @@ Rails.application.routes.draw do
    namespace :api do
      namespace :v1 do
        resources :playdates, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+       resources :messages, only: [:create]
+       resources :users, only: [:index, :show]
+           get "users/current" => "users#current_user"
      end
    end
+
+  #  namespace :api do
+  #   namespace :v1 do
+  #     resources :messages, only: [:create]
+  #     resources :users, only: [:show]
+  #     get "users/current" => "users#current_user"
+  #   end
+  # end
 end

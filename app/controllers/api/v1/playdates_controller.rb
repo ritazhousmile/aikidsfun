@@ -15,7 +15,7 @@ class Api::V1::PlaydatesController < ApplicationController
     playdate = Playdate.new(playdate_params)
     playdate.host = current_user
     if playdate.save
-      render json: playdate 
+      render json: playdate
     else
       render json: playdate.errors.full_messages.join(',')
     end
@@ -34,8 +34,10 @@ class Api::V1::PlaydatesController < ApplicationController
     else
       userdate = Userdate.new(user: current_user, playdate: playdate)
       record = Userdate.where(user: current_user, playdate: playdate).exists?
+      
         if record
-          render json: {playdate: playdate, error_message: "You have already attended this playdate"}
+          users = playdate.users
+          render json: {playdate: playdate, users: users,  error_message: "You have already attended this playdate"}
         else
           userdate.save
           playdate.save
