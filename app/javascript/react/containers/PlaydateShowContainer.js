@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PlaydateShow from "../components/PlaydateShow"
 import PlaydateFormContainer from './PlaydateFormContainer'
+import ChatContainer from './ChatContainer'
 
 class PlaydateShowContainer extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class PlaydateShowContainer extends Component {
       users: [],
       host: '',
       currentUser:'',
-      editedPlaydate: false
+      editedPlaydate: false,
     }
     this.handcleEditeClick=this.handcleEditeClick.bind(this)
     this.updatePlaydateInfo = this.updatePlaydateInfo.bind(this)
@@ -78,7 +79,6 @@ class PlaydateShowContainer extends Component {
       })
   }
 
-
   updatePlaydateInfo(newPlaydateInfo) {
     fetch(`/api/v1/playdates/${this.props.match.params.id}`, {
       method: 'PATCH',
@@ -100,8 +100,6 @@ class PlaydateShowContainer extends Component {
         this.setState({playdate: body})
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-
-
   }
 
   render() {
@@ -112,6 +110,7 @@ class PlaydateShowContainer extends Component {
           updatePlaydateInfo={this.updatePlaydateInfo}
          />
     }
+
     return(
       <div>
       <PlaydateShow
@@ -131,6 +130,8 @@ class PlaydateShowContainer extends Component {
       />
 
       {editPlaydate}
+
+      <ChatContainer id={this.props.match.params.id} />
       </div>
     )
   }
