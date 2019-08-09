@@ -3,9 +3,6 @@ class PlaydateSerializer < ActiveModel::Serializer
   belongs_to :host, class_name: 'User'
 
   def host_full_name
-    puts "HELLO FROM SERIALIZER"
-    puts object
-    puts object.host
     "#{object.host.first_name} #{object.host.last_name}"
   end
 
@@ -19,6 +16,4 @@ class PlaydateSerializer < ActiveModel::Serializer
 
   has_many :userdates
   has_many :users, through: :userdates
-
-
 end
