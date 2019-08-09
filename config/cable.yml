@@ -6,5 +6,4 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: aikidsfun_production
+  url: redis://redistogo:c1a10213ca2bc54e6afabc30cd1d229f@hammerjaw.redistogo.com:11037/

@@ -91,3 +91,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
+
+
+
+config.web_socket_server_url = "wss://aikidsfun.herokuapp.com/cable"
