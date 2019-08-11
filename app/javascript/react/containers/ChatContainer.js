@@ -34,19 +34,14 @@ class ChatContainer extends Component {
     })
 
     App.chatChannel = App.cable.subscriptions.create(
-      // Info that is sent to the subscribed method
       {
         channel: "ChatChannel",
         chat_id: this.props.id
-        // currently this is hardcoded
-        // If you had router, you could do:
-        // chat_id: this.props.params["id"]
       },
       {
         connected: () => console.log("ChatChannel connected"),
         disconnected: () => console.log("ChatChannel disconnected"),
         received: data => {
-          // Data broadcasted from the chat channel
           console.log(data)
           this.handleMessageReceipt(data)
         }
@@ -67,7 +62,6 @@ class ChatContainer extends Component {
     let prepMessage = this.state.message
     let user_info = this.state.user
 
-    // Send info to the receive method on the back end
     App.chatChannel.send({
      message: prepMessage,
      user: user_info
@@ -93,9 +87,10 @@ class ChatContainer extends Component {
     }, this);
 
     return(
-      <div>
+      <div className="chat-container columns small-6 medium-6 large-6">
         <div className="chat-window">
-          <div className="message-box panel">
+          <div className="message-box panel playdate-show-box">
+            <h3>Group Chat</h3>
           {messages}
           </div>
         </div>
@@ -104,6 +99,7 @@ class ChatContainer extends Component {
             content={this.state.message}
             name='message'
             handlerFunction={this.handleMessageChange}
+            placeholder='Enter your message'
           />
         </form>
       </div>

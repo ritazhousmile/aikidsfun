@@ -84,7 +84,7 @@ class PlaydateFormContainer extends Component {
     }
 
     return (
-      <div>
+      <div className="playdate-show-box columns small-12 medium-12 large-12">
         <h3>Add New Playdate</h3>
         <form className="new-playdate-form callout" onSubmit={handleClick}>
           <Textfield

@@ -1,0 +1,15 @@
+.home-orbit-container {
+  width: 750px;
+  margin: 0 auto;
+  padding-top: 25px;
+  background-color: #F2F7F6;
+}
+.home-orbit img {
+  height: 500px;
+  margin: 0 auto;
+}
+.orbit-container {
+}
+.home-about {
+  margin: 1em 0;
+}

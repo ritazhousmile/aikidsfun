@@ -8,10 +8,9 @@ const TextFieldWithSubmit = props => {
         name={props.name}
         onChange={props.handlerFunction}
         type='text'
-        value={props.content} />
-      <div className='input-group-button'>
-        <input type='submit' className='button' value='Chat' />
-      </div>
+        value={props.content}
+        placeholder={props.placeholder} />
+      <input type='submit' className='input-group-button button' value='Chat' />
     </div>
   );
 }
