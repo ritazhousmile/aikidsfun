@@ -1,9 +1,45 @@
+.playdate-show-box {
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 10px;
+  background-color: #F2F7F6;
+}
+.playdate-show-card {
+}
+.playdate-show-box h3, .playdate-show-box h5 {
+}
+#playdate-name button {
+}
+.playdate-header {
+  padding-bottom: 0;
+}
+.playdate-header button {
+}
+#playdate-show-host-name {
+  margin-bottom: 1em;
+}
+.playdate-summary {
+}
+.playdate-summary div {
+  margin: 0.5em 0;
+}
 .playdate-details {
-  background-color: #F6F7F8;
 }
 .playdate-attendees {
-  background-color: #EDF4ED;
 }
 .playdate-attendee {
   display: inline-block;
+}
+.input-group-button.button {
+  display: none;
+}
+.chat-window {
+  height: 300px;
+  overflow: hidden;
+}
+.message-box {
+  height: 300px;
+  overflow-y: scroll;
+  border: 0px solid white;
+  margin: 0;
 }

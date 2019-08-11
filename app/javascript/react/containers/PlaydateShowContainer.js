@@ -113,25 +113,28 @@ class PlaydateShowContainer extends Component {
 
     return(
       <div>
-      <PlaydateShow
-        key={this.state.playdate.id}
-        name={this.state.playdate.name}
-        time={this.state.playdate.time}
-        location={this.state.playdate.location}
-        description={this.state.playdate.description}
-        hostFirstName={this.state.host.first_name}
-        hostLastName={this.state.host.last_name}
-        handleClick={this.handcleEditeClick}
-        handleDelete={this.handleDeleteClick}
-        hostId={this.state.playdate.host_id}
-        handleAttendClick = {this.handleAttendClick}
-        currentUser={this.state.currentUser}
-        attendees={this.state.users}
-      />
+        <div className="row">
+          <PlaydateShow
+            key={this.state.playdate.id}
+            name={this.state.playdate.name}
+            time={this.state.playdate.time}
+            location={this.state.playdate.location}
+            description={this.state.playdate.description}
+            hostFirstName={this.state.host.first_name}
+            hostLastName={this.state.host.last_name}
+            handleClick={this.handcleEditeClick}
+            handleDelete={this.handleDeleteClick}
+            hostId={this.state.playdate.host_id}
+            handleAttendClick = {this.handleAttendClick}
+            currentUser={this.state.currentUser}
+            attendees={this.state.users}
+          />
 
-      {editPlaydate}
-
-      <ChatContainer id={this.props.match.params.id} />
+          <ChatContainer id={this.props.match.params.id} />
+        </div>
+        <div className="row">
+          {editPlaydate}
+        </div>
       </div>
     )
   }

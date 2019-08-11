@@ -10,11 +10,11 @@
 #app .button, #app button {
   margin-right: 1em;
   width: 120px;
-  background-color: #159AD7;
+  background-color: #01B51E;
   color: black;
 }
 
 #app .button:hover, #app button:hover {
-  background-color: #555555;
+  background-color: #9FD9A3;
   color: white;
 }

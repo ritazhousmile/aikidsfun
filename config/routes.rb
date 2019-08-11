@@ -11,8 +11,12 @@ Rails.application.routes.draw do
        resources :messages, only: [:create]
        resources :users, only: [:index, :show]
            get "users/current" => "users#current_user"
+           # get "/meetups", to: "meetup#search"
      end
    end
+   get "/meetups", to: "meetups#search"
+   get "/meetups", to: "meetup#search"
+
 
   #  namespace :api do
   #   namespace :v1 do
