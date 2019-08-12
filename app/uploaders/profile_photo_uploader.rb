@@ -5,12 +5,12 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
-  # # storage :fog
-  # if Rails.env.test?
-  storage :file
-  # else
   # storage :fog
-  # end
+  if Rails.env.test?
+  storage :file
+  else
+  storage :fog
+  end
 
 
   # Override the directory where uploaded files will be stored.
@@ -30,9 +30,9 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   # process scale: [200, 300]
   #
-  def scale(width, height)
-    # do something
-  end
+  # def scale(width, height)
+  #   # do something
+  # end
 
   # Create different versions of your uploaded files:
   # version :thumb do
