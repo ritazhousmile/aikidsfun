@@ -59,3 +59,4 @@ gem 'webpacker', '~> 3.3'
 gem "carrierwave"
 gem 'httparty'
 gem 'active_model_serializers'
+gem "fog"
