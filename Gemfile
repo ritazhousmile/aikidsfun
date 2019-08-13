@@ -29,10 +29,6 @@ gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-group :development, :test do
-
-end
-
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -59,5 +55,4 @@ gem 'webpacker', '~> 3.3'
 gem "carrierwave"
 gem 'httparty'
 gem 'active_model_serializers'
-gem "fog"
-gem "fog-aws"
+gem 'fog'
