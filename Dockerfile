@@ -1,4 +1,4 @@
-FROM ruby:2.4.10
+FROM ruby:3.1.5
 
 # Install dependencies
 RUN apt-get update -qq && \
