@@ -23,57 +23,62 @@ class PlaydateFormContainer extends Component {
     this.handleFormUpdate = this.handleFormUpdate.bind(this)
   }
 
-    handleFormSubmit(event) {
+  handleFormSubmit(event) {
+    event.preventDefault();
+    let newPlaydateObject = {
+      name: this.state.name,
+      time: this.state.time,
+      location: this.state.location,
+      description: this.state.description
+    }
+    this.props.addNewplaydate(newPlaydateObject)
+    // Note: We'll only clear the form when the submission is successful
+    // The errors will be handled in PlaydateIndexContainer
+  }
+
+  handleFormUpdate(event) {
+    event.preventDefault();
+    let newPlaydateInfo = {
+      name: this.state.name,
+      time: this.state.time,
+      location: this.state.location,
+      description: this.state.description
+    }
+    this.props.updatePlaydateInfo(newPlaydateInfo)
+    this.handleClearForm()
+  }
+
+  handleNameChange(event) {
+    let input = event.target.value
+    this.setState({name: input})
+  }
+
+  handleTimeChange(event) {
+    let input = event.target.value
+    this.setState({time: input})
+  }
+
+  handleLocationChange(event) {
+    let input = event.target.value
+    this.setState({location: input})
+  }
+
+  handleDescriptionChange(event) {
+    let input = event.target.value
+    this.setState({description: input})
+  }
+
+  handleClearForm(event) {
+    if (event) {
       event.preventDefault();
-      let newPlaydateObject = {
-        name: this.state.name,
-        time: this.state.time,
-        location: this.state.location,
-        description: this.state.description
-      }
-      this.props.addNewplaydate(newPlaydateObject)
-      this.handleClearForm()
     }
-    handleFormUpdate(event) {
-      event.preventDefault();
-      let newPlaydateInfo = {
-        name: this.state.name,
-        time: this.state.time,
-        location: this.state.location,
-        description: this.state.description
-      }
-      this.props.updatePlaydateInfo(newPlaydateInfo)
-      this.handleClearForm()
-    }
-
-    handleNameChange(event) {
-      let input = event.target.value
-      this.setState({name: input})
-    }
-
-    handleTimeChange(event) {
-      let input = event.target.value
-      this.setState({time: input})
-    }
-
-    handleLocationChange(event) {
-      let input = event.target.value
-      this.setState({location: input})
-    }
-
-    handleDescriptionChange(event) {
-      let input = event.target.value
-      this.setState({description: input})
-    }
-
-    handleClearForm() {
-      this.setState({
-        name: '',
-        time: '',
-        location: '',
-        description: ''
-      })
-    }
+    this.setState({
+      name: '',
+      time: '',
+      location: '',
+      description: ''
+    })
+  }
 
   render() {
     let handleClick
@@ -96,14 +101,14 @@ class PlaydateFormContainer extends Component {
 
           <Textfield
             content={this.state.time}
-            label="Playdate Time"
+            label="Playdate Time (e.g. July 15, 2025 at 3:00 PM)"
             name='time'
             inputChange={this.handleTimeChange}
           />
 
           <Textfield
             content={this.state.location}
-            label="Playdate location"
+            label="Playdate Location"
             name='location'
             inputChange={this.handleLocationChange}
           />
@@ -116,7 +121,7 @@ class PlaydateFormContainer extends Component {
           />
 
           <div className="button-group">
-            <button className="button">Clear</button>
+            <button className="button" onClick={this.handleClearForm}>Clear</button>
             <input className="button" type="submit" value="Submit" />
           </div>
         </form>

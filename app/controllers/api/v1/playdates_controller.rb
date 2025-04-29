@@ -17,7 +17,7 @@ class Api::V1::PlaydatesController < ApplicationController
     if playdate.save
       render json: playdate
     else
-      render json: playdate.errors.full_messages.join(',')
+      render json: { errors: playdate.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -29,7 +29,7 @@ class Api::V1::PlaydatesController < ApplicationController
         flash[:success] = "Playdate updated successfully"
         render json: playdate
       else
-        render json: playdate.errors.full_messages.join(',')
+        render json: { errors: playdate.errors.full_messages }, status: :unprocessable_entity
       end
     else
       userdate = Userdate.new(user: current_user, playdate: playdate)
@@ -53,8 +53,8 @@ class Api::V1::PlaydatesController < ApplicationController
       playdate.destroy
       render json: Playdate.all
     else
-       render json: {playdate: "playdate", error_message: 'You are not authorized to delete this playdate!'}
-     end
+      render json: {playdate: "playdate", error_message: 'You are not authorized to delete this playdate!'}
+    end
   end
 
   private

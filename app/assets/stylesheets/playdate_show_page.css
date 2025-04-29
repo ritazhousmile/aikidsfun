@@ -3,32 +3,64 @@
   margin: 1em 0;
   border-radius: 10px;
   background-color: #F2F7F6;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+  border: 1px solid #E6E7E9;
 }
 .playdate-show-card {
+  transition: all 0.3s ease;
 }
 .playdate-show-box h3, .playdate-show-box h5 {
+  color: #01B51E;
+  margin-bottom: 0.8em;
 }
 #playdate-name button {
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
 }
 .playdate-header {
   padding-bottom: 0;
 }
 .playdate-header button {
+  background-color: #01B51E;
+  color: white;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  transition: background-color 0.2s ease;
+  border: none;
+  margin-right: 8px;
+}
+.playdate-header button:hover {
+  background-color: #028a17;
 }
 #playdate-show-host-name {
   margin-bottom: 1em;
+  font-weight: bold;
 }
 .playdate-summary {
+  font-size: 1.1em;
 }
 .playdate-summary div {
   margin: 0.5em 0;
 }
 .playdate-details {
+  line-height: 1.5;
 }
 .playdate-attendees {
+  text-align: center;
 }
 .playdate-attendee {
   display: inline-block;
+  margin: 0.5em;
+}
+.playdate-attendee img.profile-photo-round {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #FDC809;
+  transition: transform 0.2s ease;
+}
+.playdate-attendee img.profile-photo-round:hover {
+  transform: scale(1.1);
 }
 .input-group-button.button {
   display: none;
@@ -36,10 +68,15 @@
 .chat-window {
   height: 300px;
   overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 1em;
+  border: 1px solid #E6E7E9;
 }
 .message-box {
   height: 300px;
   overflow-y: scroll;
   border: 0px solid white;
   margin: 0;
+  padding: 1em;
 }

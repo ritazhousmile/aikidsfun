@@ -83,6 +83,4 @@ test:
 #
 production:
   <<: *default
-  database: aikidsfun_production
-  username: aikidsfun
-  password: <%= ENV['AIKIDSFUN_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>

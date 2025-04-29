@@ -6,7 +6,8 @@ class PlaydateIndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playdates: []
+      playdates: [],
+      errors: []
     }
     this.addNewplaydate = this.addNewplaydate.bind(this)
   }
@@ -16,23 +17,29 @@ class PlaydateIndexContainer extends Component {
       method: 'POST',
       credentials: 'same-origin',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify(newPlaydateObject)
+      body: JSON.stringify({playdate: newPlaydateObject})
     })
       .then(response => {
         if (response.ok) {
-          return response;
+          return response.json();
+        } else if (response.status === 422) {
+          return response.json().then(data => {
+            this.setState({ errors: data.errors });
+            throw new Error(data.errors.join(', '));
+          });
         } else {
           let errorMessage = `${response.status} (${response.statusText})`,
            error = new Error(errorMessage);
            throw(error);
         }
       })
-        .then(response => response.json())
-        .then(body => {
-          this.setState({playdates: this.state.playdates.concat(body)})
-
-        })
-        .catch(error => console.error(`Error in fetch: ${error.message}`));
+      .then(body => {
+        this.setState({
+          playdates: this.state.playdates.concat(body),
+          errors: []
+        });
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   componentDidMount() {
@@ -69,16 +76,30 @@ class PlaydateIndexContainer extends Component {
           />
       )
     })
+    
+    let errorMessages;
+    if (this.state.errors.length > 0) {
+      errorMessages = (
+        <div className="callout alert">
+          <h5>Please correct the following errors:</h5>
+          <ul>
+            {this.state.errors.map((error, index) => (
+              <li key={index}>{error}</li>
+            ))}
+          </ul>
+        </div>
+      );
+    }
 
     return(
       <div>
-      <h1>Playdates</h1>
+        <h1>Playdates</h1>
+        {errorMessages}
         {playdateTiles}
         <PlaydateFormContainer addNewplaydate={this.addNewplaydate} />
       </div>
     )
   }
 }
-
 
 export default PlaydateIndexContainer
