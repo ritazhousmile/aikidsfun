@@ -1,14 +1,17 @@
 CarrierWave.configure do |config|
-  if !Rails.env.test?
+  # Use file storage for development and test environments
+  if Rails.env.development? || Rails.env.test?
+    config.storage = :file
+  # Use fog storage for production
+  elsif Rails.env.production?
+    # Require fog/aws only in production to avoid dependency on AWS
+    require 'fog/aws'
+    config.storage = :fog
     config.fog_credentials = {
       provider: "AWS",
       aws_access_key_id: ENV["AWS_ACCESS_KEY_ID"],
       aws_secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
     }
-    if Rails.env.production?
-      config.fog_directory  = ENV["PRODUCTION_S3_BUCKET"]
-    else
-      config.fog_directory  = ENV["DEVELOPMENT_S3_BUCKET"]
-    end
+    config.fog_directory = ENV["PRODUCTION_S3_BUCKET"]
   end
 end
